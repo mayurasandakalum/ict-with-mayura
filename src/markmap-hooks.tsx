@@ -63,13 +63,13 @@ export default function MarkmapHooks() {
 
   return (
     <React.Fragment>
-      <div className="flex-1">
+      {/* <div className="flex-1">
         <textarea
           className="w-full h-full border border-gray-400"
           value={value}
           onChange={handleChange}
         />
-      </div>
+      </div> */}
       <svg className="flex-1" ref={refSvg} />
       <div className="absolute bottom-1 right-1" ref={refToolbar}></div>
     </React.Fragment>
