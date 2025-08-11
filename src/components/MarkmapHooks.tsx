@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Markmap } from 'markmap-view';
-import { transformer } from '../lib/markmap';
-import { Toolbar } from 'markmap-toolbar';
-import 'markmap-toolbar/dist/style.css';
+import React, { useState, useRef, useEffect } from "react";
+import { Markmap } from "markmap-view";
+import { transformer } from "../lib/markmap";
+import { Toolbar } from "markmap-toolbar";
+import "markmap-toolbar/dist/style.css";
 
 const defaultInitValue = `# markmap
 
@@ -18,17 +18,21 @@ function renderToolbar(mm: Markmap, wrapper: HTMLElement) {
     const toolbar = new Toolbar();
     toolbar.attach(mm);
     toolbar.register({
-      id: 'alert',
-      title: 'Click to show an alert',
-      content: 'Alert',
-      onClick: () => alert('You made it!'),
+      id: "alert",
+      title: "Click to show an alert",
+      content: "Alert",
+      onClick: () => alert("You made it!"),
     });
-    toolbar.setItems([...Toolbar.defaultItems, 'alert']);
+    toolbar.setItems([...Toolbar.defaultItems, "alert"]);
     wrapper.append(toolbar.render());
   }
 }
 
-export default function MarkmapHooks({ initialValue }: { initialValue?: string }) {
+export default function MarkmapHooks({
+  initialValue,
+}: {
+  initialValue?: string;
+}) {
   const [value, setValue] = useState(initialValue ?? defaultInitValue);
   const refSvg = useRef<SVGSVGElement | null>(null);
   const refMm = useRef<Markmap>();
@@ -36,8 +40,16 @@ export default function MarkmapHooks({ initialValue }: { initialValue?: string }
 
   useEffect(() => {
     if (refMm.current) return;
-    const mm = Markmap.create(refSvg.current);
+
+    const mm = Markmap.create(refSvg.current, {
+      autoFit: true, // Enable auto-fit
+      fitRatio: 0.8, // Optional: adjust fit ratio (default is 0.95)
+      spacingHorizontal: 120, // Adjust horizontal spacing
+      spacingVertical: 20, // Adjust vertical spacing
+    });
+
     refMm.current = mm;
+
     if (refToolbar.current) {
       renderToolbar(refMm.current, refToolbar.current);
     }
