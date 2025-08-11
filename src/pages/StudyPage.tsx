@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { loadMarkdown } from "../lib/loadMarkdown";
 
 export function StudyPage() {
-  const { level } = useParams<{ level: "ol" | "al" }>();
+  const { level } = useParams<{ level: "ol" | "al-12" }>();
   const navigate = useNavigate();
   const [markdown, setMarkdown] = useState<string>("Loading...");
   const [error, setError] = useState<string | null>(null);
