@@ -110,9 +110,14 @@ export function HomePage() {
               <p>Exam-focused, bite-sized.</p>
             </div>
             <div className="method-item">
-              <div className="method-item-icon">✅</div>
-              <h3>Quick Quizzes</h3>
-              <p>Instant feedback with "why".</p>
+              <div className="method-item-icon">📄</div>
+              <h3>Papers</h3>
+              <p>Practice with past papers.</p>
+            </div>
+            <div className="method-item">
+              <div className="method-item-icon">🖋️</div>
+              <h3>Marking Schemes</h3>
+              <p>Understand marking criteria.</p>
             </div>
           </div>
         </div>
@@ -215,9 +220,12 @@ export function HomePage() {
               <button className="btn primary">Browse Notes</button>
             </div>
             <div className="card quiz-section">
-              <h3>Quick Quiz</h3>
-              <p>Try 5 MCQs with explanations</p>
-              <button className="btn primary">Start Quiz</button>
+              <h3>Papers & Marking Schemes</h3>
+              <p>
+                Access past papers and their marking schemes for practice and
+                insights.
+              </p>
+              <button className="btn primary">View Resources</button>
             </div>
           </div>
         </div>
