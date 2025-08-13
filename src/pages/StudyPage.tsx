@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import MarkmapHooks from "../components/MarkmapHooks";
 import { useEffect, useState } from "react";
 import { loadMarkdown } from "../lib/loadMarkdown";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 export function StudyPage() {
   const { level } = useParams<{ level: "ol" | "al-12" }>();
@@ -20,9 +21,12 @@ export function StudyPage() {
 
   return (
     <div className="mindmap-container">
-      <button className="btn back-button" onClick={() => navigate("/")}>
-        ← Back to Home
-      </button>
+      <div className="study-header">
+        <button className="btn back-button" onClick={() => navigate("/")}>
+          ← Back to Home
+        </button>
+        <ThemeToggle />
+      </div>
       {error ? (
         <div className="container" style={{ paddingTop: "64px" }}>
           <div

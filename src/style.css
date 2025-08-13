@@ -40,6 +40,27 @@
   }
 }
 
+/* Manual theme overrides */
+.theme-light {
+  --fg: #101418;
+  --fg-muted: #495566;
+  --bg: #ffffff;
+  --bg-alt: #f7f8fb;
+  --border: #e6e8ee;
+  --shadow-1: 0 2px 8px rgba(16, 20, 24, 0.08);
+  --shadow-2: 0 8px 24px rgba(16, 20, 24, 0.12);
+}
+
+.theme-dark {
+  --fg: #eef2f7;
+  --fg-muted: #9aa5b1;
+  --bg: #0b0f14;
+  --bg-alt: #121821;
+  --border: #1f2630;
+  --shadow-1: none;
+  --shadow-2: none;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -146,6 +167,46 @@ body {
 
 .nav a:hover {
   color: var(--fg);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: var(--space-4);
+  position: relative;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-1);
+  background: var(--bg-alt);
+}
+
+.theme-toggle.theme-auto .auto-indicator {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  background: var(--brand);
+  color: white;
+  border-radius: 50%;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 /* Hero */
@@ -533,6 +594,17 @@ body {
   z-index: 10;
 }
 
+.study-header {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
 .mm-toolbar img {
   display: inline;
 }
@@ -566,6 +638,30 @@ body {
   }
 
   .nav {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-4);
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .nav a,
+  .nav .btn {
     display: none;
+  }
+
+  .nav .theme-toggle {
+    display: inline-flex;
+  }
+
+  .study-header {
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: flex-start;
+  }
+
+  .study-header .theme-toggle {
+    align-self: flex-end;
   }
 }

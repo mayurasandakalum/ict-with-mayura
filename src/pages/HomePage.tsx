@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ export function HomePage() {
             <button className="btn primary" onClick={scrollToJoin}>
               Join Class
             </button>
+            <ThemeToggle />
           </nav>
         </div>
       </header>
