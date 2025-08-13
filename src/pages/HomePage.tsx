@@ -39,12 +39,12 @@ export function HomePage() {
     alert(`${toolName} functionality would be implemented here!`);
   };
 
-  const handleMarkmapPreviewClick = () => {
-    // You could navigate to a dedicated grades page or show a modal
-    alert(
-      "Click on 'View Mind Maps' button to explore detailed mind maps for each grade!"
-    );
-  };
+  // const handleMarkmapPreviewClick = () => {
+  //   // You could navigate to a dedicated grades page or show a modal
+  //   alert(
+  //     "Click on 'View Mind Maps' button to explore detailed mind maps for each grade!"
+  //   );
+  // };
 
   return (
     <div className="min-h-screen">
