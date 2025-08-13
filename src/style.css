@@ -261,13 +261,18 @@ body {
 .hero-visual {
   background: var(--bg-alt);
   border-radius: var(--radius-md);
-  height: 400px;
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--fg-muted);
-  font-size: 1.125rem;
-  border: 2px dashed var(--border);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-visual:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
 }
 
 /* Method Strip */
@@ -618,6 +623,10 @@ body {
 
   .hero-content h1 {
     font-size: 2rem;
+  }
+
+  .hero-visual {
+    height: 300px;
   }
 
   .method-items {

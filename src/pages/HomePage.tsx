@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeToggle } from "../components/ThemeToggle";
+import MarkmapPreview from "../components/MarkmapPreview";
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -36,6 +37,13 @@ export function HomePage() {
 
   const handleToolClick = (toolName: string) => {
     alert(`${toolName} functionality would be implemented here!`);
+  };
+
+  const handleMarkmapPreviewClick = () => {
+    // You could navigate to a dedicated grades page or show a modal
+    alert(
+      "Click on 'View Mind Maps' button to explore detailed mind maps for each grade!"
+    );
   };
 
   return (
@@ -81,7 +89,9 @@ export function HomePage() {
               <span className="tag">සිංහල + English</span>
             </div>
           </div>
-          <div className="hero-visual">Mind map preview placeholder</div>
+          <div className="hero-visual">
+            <MarkmapPreview />
+          </div>
         </div>
       </section>
 
