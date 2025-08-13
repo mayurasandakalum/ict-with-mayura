@@ -61,6 +61,57 @@
   --shadow-2: none;
 }
 
+/* Markmap dark theme overrides */
+@media (prefers-color-scheme: dark) {
+  .markmap {
+    --markmap-text-color: #eef2f7 !important;
+    --markmap-code-color: #ddd !important;
+    --markmap-code-bg: #1a1b26 !important;
+    --markmap-circle-open-bg: #444 !important;
+  }
+}
+
+.theme-dark .markmap {
+  --markmap-text-color: #eef2f7 !important;
+  --markmap-code-color: #ddd !important;
+  --markmap-code-bg: #1a1b26 !important;
+  --markmap-circle-open-bg: #444 !important;
+}
+
+.theme-light .markmap {
+  --markmap-text-color: #333 !important;
+  --markmap-code-color: #555 !important;
+  --markmap-code-bg: #f0f0f0 !important;
+  --markmap-circle-open-bg: #fff !important;
+}
+
+/* Additional markmap text color overrides */
+.theme-dark .markmap-foreign {
+  color: #eef2f7 !important;
+}
+
+.theme-light .markmap-foreign {
+  color: #333 !important;
+}
+
+.theme-dark .markmap-foreign div {
+  color: #eef2f7 !important;
+}
+
+.theme-light .markmap-foreign div {
+  color: #333 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .markmap-foreign {
+    color: #eef2f7 !important;
+  }
+
+  .markmap-foreign div {
+    color: #eef2f7 !important;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

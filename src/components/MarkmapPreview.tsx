@@ -25,29 +25,32 @@ export default function MarkmapPreview({ onClick }: MarkmapPreviewProps) {
     // Prevent multiple initializations
     if (refMm.current) return;
 
-    const mm = Markmap.create(svgElement, {
-      autoFit: true,
-      fitRatio: 0.9,
-      spacingHorizontal: 80,
-      spacingVertical: 15,
-      // Disable interactions for preview
-      pan: false,
-      zoom: false,
-    });
+    // Small delay to ensure DOM and CSS are ready
+    setTimeout(() => {
+      const mm = Markmap.create(svgElement, {
+        autoFit: true,
+        fitRatio: 0.9,
+        spacingHorizontal: 80,
+        spacingVertical: 15,
+        // Disable interactions for preview
+        pan: false,
+        zoom: false,
+      });
 
-    refMm.current = mm;
+      refMm.current = mm;
 
-    // If we already have markdown, render it immediately
-    if (markdown !== "Loading...") {
-      try {
-        const { root } = transformer.transform(markdown);
-        mm.setData(root).then(() => {
-          mm.fit();
-        });
-      } catch (e) {
-        console.error("Error transforming markdown:", e);
+      // If we already have markdown, render it immediately
+      if (markdown !== "Loading...") {
+        try {
+          const { root } = transformer.transform(markdown);
+          mm.setData(root).then(() => {
+            mm.fit();
+          });
+        } catch (e) {
+          console.error("Error transforming markdown:", e);
+        }
       }
-    }
+    }, 100); // 100ms delay
   };
 
   // Load the grades.md file
@@ -91,6 +94,10 @@ export default function MarkmapPreview({ onClick }: MarkmapPreviewProps) {
       const { root } = transformer.transform(markdown);
       refMm.current.setData(root).then(() => {
         refMm.current?.fit();
+        // Force a small delay and re-fit to ensure proper rendering
+        setTimeout(() => {
+          refMm.current?.fit();
+        }, 50);
       });
     } catch (e) {
       console.error("Error transforming markdown:", e);
