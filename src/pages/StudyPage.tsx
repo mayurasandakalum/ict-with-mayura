@@ -19,20 +19,22 @@ export function StudyPage() {
   }, [level]);
 
   return (
-    <div className="flex flex-col flex-1 relative">
-      <button
-        className="absolute top-2 left-2 z-10 px-3 py-1 text-xs bg-gray-200 rounded shadow hover:bg-gray-300"
-        onClick={() => navigate("/")}
-      >
-        ← Back
+    <div className="mindmap-container">
+      <button className="btn back-button" onClick={() => navigate("/")}>
+        ← Back to Home
       </button>
-      <div className="flex flex-1 pt-8">
-        {error ? (
-          <div className="m-auto text-red-600">{error}</div>
-        ) : (
-          <MarkmapHooks initialValue={markdown} />
-        )}
-      </div>
+      {error ? (
+        <div className="container" style={{ paddingTop: "64px" }}>
+          <div
+            className="card"
+            style={{ textAlign: "center", color: "var(--danger)" }}
+          >
+            {error}
+          </div>
+        </div>
+      ) : (
+        <MarkmapHooks initialValue={markdown} />
+      )}
     </div>
   );
 }

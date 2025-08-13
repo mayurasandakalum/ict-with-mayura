@@ -8,12 +8,10 @@ import "./style.css";
 function App() {
   return (
     <BrowserRouter basename="/ict-with-mayura">
-      <div className="flex flex-col h-screen p-2">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/study/:level" element={<StudyPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/study/:level" element={<StudyPage />} />
+      </Routes>
     </BrowserRouter>
   );
 }

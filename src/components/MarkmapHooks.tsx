@@ -72,8 +72,23 @@ export default function MarkmapHooks({
 
   return (
     <React.Fragment>
-      <svg className="flex-1" ref={refSvg} />
-      <div className="absolute bottom-1 right-1" ref={refToolbar}></div>
+      <svg
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+        }}
+        ref={refSvg}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "16px",
+          right: "16px",
+          zIndex: 10,
+        }}
+        ref={refToolbar}
+      ></div>
     </React.Fragment>
   );
 }
