@@ -8,7 +8,7 @@ import { ThemeToggle } from "../components/ThemeToggle";
 export function StudyPage() {
   const { level } = useParams<{ level: "ol" | "al-12" }>();
   const navigate = useNavigate();
-  const [markdown, setMarkdown] = useState<string>("Loading...");
+  const [markdown, setMarkdown] = useState<string>("පූරණය වෙමින්...");
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export function StudyPage() {
     <div className="mindmap-container">
       <div className="study-header">
         <button className="btn back-button" onClick={() => navigate("/")}>
-          ← Back to Home
+          ← මුල් පිටුවට
         </button>
         <ThemeToggle />
       </div>

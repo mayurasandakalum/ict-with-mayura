@@ -20,11 +20,11 @@ export function HomePage() {
     const { name, email, phone } = formData;
 
     if (!name.trim() || !email.trim() || !phone.trim()) {
-      alert("Please fill in all fields.");
+      alert("කරුණාකර සියලුම ක්ෂේත්‍ර පුරවන්න.");
       return;
     }
 
-    alert("Thank you! Your PDF will be sent to your email shortly.");
+    alert("ස්තූතියි! ඔබගේ PDF කෙටි වේලාවකින් ඔබගේ විද්‍යුත් තැපෑලට එවනු ලැබේ.");
     setFormData({ name: "", email: "", phone: "" });
   };
 
@@ -36,7 +36,7 @@ export function HomePage() {
   };
 
   const handleToolClick = (toolName: string) => {
-    alert(`${toolName} functionality would be implemented here!`);
+    alert(`${toolName} ක්‍රියාකාරීත්වය මෙහි ක්‍රියාත්මක වනු ඇත!`);
   };
 
   // const handleMarkmapPreviewClick = () => {
@@ -51,15 +51,15 @@ export function HomePage() {
       {/* Header */}
       <header className="header">
         <div className="container">
-          <div className="logo">Mayura ICT</div>
+          <div className="logo">මයურ ICT</div>
           <nav className="nav">
             <a href="#mindmaps">Mind Maps</a>
-            <a href="#notes">Notes</a>
-            <a href="#schedule">Schedule</a>
-            <a href="#results">Results</a>
-            <a href="#contact">Contact</a>
+            <a href="#notes">සටහන්</a>
+            <a href="#schedule">කාලසටහන</a>
+            <a href="#results">ප්‍රතිඵල</a>
+            <a href="#contact">සම්බන්ධ වන්න</a>
             <button className="btn primary" onClick={scrollToJoin}>
-              Join Class
+              පන්තියට සහභාගී වන්න
             </button>
             <ThemeToggle />
           </nav>
@@ -72,21 +72,21 @@ export function HomePage() {
           <div className="hero-content">
             <h1>ICT පටන් ගන්න කලින් සිතියම බලමු</h1>
             <p>
-              Start with the mind map. See the big picture, master the details,
-              score higher.
+              Mind Maps වලින් පටන් ගන්න. විශාල චිත්‍රය බලන්න, විස්තර ප්‍රගුණ
+              කරන්න, ඉහළ ලකුණු ලබා ගන්න.
             </p>
             <div className="hero-buttons">
               <a href="#mindmaps" className="btn primary">
-                View Mind Maps
+                Mind Maps බලන්න
               </a>
               <button className="btn" onClick={scrollToJoin}>
-                Join Class
+                පන්තියට සහභාගී වන්න
               </button>
             </div>
             <div className="hero-tags">
-              <span className="tag">O/L</span>
-              <span className="tag">A/L</span>
-              <span className="tag">සිංහල + English</span>
+              <span className="tag">සා/පෙළ</span>
+              <span className="tag">උ/පෙළ</span>
+              <span className="tag">සිංහල + ඉංග්‍රීසි</span>
             </div>
           </div>
           <div className="hero-visual">
@@ -101,23 +101,23 @@ export function HomePage() {
           <div className="method-items">
             <div className="method-item">
               <div className="method-item-icon">🗺️</div>
-              <h3>Map</h3>
-              <p>Big-picture first for confidence.</p>
+              <h3>සිතියම</h3>
+              <p>විශ්වාසය සඳහා පළමුව විශාල චිත්‍රය.</p>
             </div>
             <div className="method-item">
               <div className="method-item-icon">📝</div>
-              <h3>Short Notes</h3>
-              <p>Exam-focused, bite-sized.</p>
+              <h3>කෙටි සටහන්</h3>
+              <p>විභාග ඉලක්ක කරගත්, කුඩා කොටස්.</p>
             </div>
             <div className="method-item">
               <div className="method-item-icon">📄</div>
-              <h3>Papers</h3>
-              <p>Practice with past papers.</p>
+              <h3>ප්‍රශ්න පත්‍ර</h3>
+              <p>පසුගිය ප්‍රශ්න පත්‍ර සමඟ පුහුණු වන්න.</p>
             </div>
             <div className="method-item">
               <div className="method-item-icon">🖋️</div>
               <h3>Marking Schemes</h3>
-              <p>Understand marking criteria.</p>
+              <p>ලකුණු දීමේ නිර්ණායක තේරුම් ගන්න.</p>
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@ export function HomePage() {
       <section id="mindmaps" className="section">
         <div className="container">
           <div className="section-header">
-            <h2>Mind Maps by Grade</h2>
+            <h2>ශ්‍රේණිය අනුව Mind Maps</h2>
           </div>
           <div className="grade-grid">
             <div
@@ -136,17 +136,17 @@ export function HomePage() {
             >
               <div className="grade-card-header">
                 <div className="grade-info">
-                  <h3>Grade 10</h3>
-                  <span>24 topics</span>
+                  <h3>10 ශ්‍රේණිය</h3>
+                  <span>මාතෘකා 24</span>
                 </div>
                 <button
                   className="btn primary"
                   onClick={() => navigate("/study/ol")}
                 >
-                  Open Map
+                  සිතියම විවෘත කරන්න
                 </button>
               </div>
-              <p>Foundation of ICT.</p>
+              <p>ICT හි පදනම.</p>
             </div>
             <div
               className="card grade-card"
@@ -154,17 +154,17 @@ export function HomePage() {
             >
               <div className="grade-card-header">
                 <div className="grade-info">
-                  <h3>Grade 11</h3>
-                  <span>26 topics</span>
+                  <h3>11 ශ්‍රේණිය</h3>
+                  <span>මාතෘකා 26</span>
                 </div>
                 <button
                   className="btn primary"
                   onClick={() => navigate("/study/ol")}
                 >
-                  Open Map
+                  සිතියම විවෘත කරන්න
                 </button>
               </div>
-              <p>Exam-focused practice.</p>
+              <p>විභාග ඉලක්ක කරගත් පුහුණුව.</p>
             </div>
             <div
               className="card grade-card"
@@ -172,17 +172,17 @@ export function HomePage() {
             >
               <div className="grade-card-header">
                 <div className="grade-info">
-                  <h3>Grade 12</h3>
-                  <span>32 topics</span>
+                  <h3>12 ශ්‍රේණිය</h3>
+                  <span>මාතෘකා 32</span>
                 </div>
                 <button
                   className="btn primary"
                   onClick={() => navigate("/study/al-12")}
                 >
-                  Open Map
+                  සිතියම විවෘත කරන්න
                 </button>
               </div>
-              <p>Core A/L theory.</p>
+              <p>උ/පෙළ මූලික සිද්ධාන්ත.</p>
             </div>
             <div
               className="card grade-card"
@@ -190,17 +190,17 @@ export function HomePage() {
             >
               <div className="grade-card-header">
                 <div className="grade-info">
-                  <h3>Grade 13</h3>
-                  <span>28 topics</span>
+                  <h3>13 ශ්‍රේණිය</h3>
+                  <span>මාතෘකා 28</span>
                 </div>
                 <button
                   className="btn primary"
                   onClick={() => navigate("/study/al-12")}
                 >
-                  Open Map
+                  සිතියම විවෘත කරන්න
                 </button>
               </div>
-              <p>Advanced + revision.</p>
+              <p>උසස් + පුනරීක්ෂණ.</p>
             </div>
           </div>
         </div>
@@ -211,21 +211,21 @@ export function HomePage() {
         <div className="container">
           <div className="two-column">
             <div className="card notes-section">
-              <h3>Short Notes</h3>
+              <h3>කෙටි සටහන්</h3>
               <ul>
-                <li>Data Representation – 2 min read</li>
-                <li>Logic Gates – 2 min read</li>
-                <li>Networking Basics – 3 min read</li>
+                <li>දත්ත නිරූපණය – මිනිත්තු 2ක කියවීමකි</li>
+                <li>තාර්කික ද්වාර – මිනිත්තු 2ක කියවීමකි</li>
+                <li>ජාලකරණ මූලික කරුණු – මිනිත්තු 3ක කියවීමකි</li>
               </ul>
-              <button className="btn primary">Browse Notes</button>
+              <button className="btn primary">සටහන් පිරික්සන්න</button>
             </div>
             <div className="card quiz-section">
-              <h3>Papers & Marking Schemes</h3>
+              <h3>ප්‍රශ්න පත්‍ර සහ ලකුණු දීමේ ක්‍රම</h3>
               <p>
-                Access past papers and their marking schemes for practice and
-                insights.
+                පුහුණුව සහ අවබෝධය සඳහා පසුගිය ප්‍රශ්න පත්‍ර සහ ඒවායේ ලකුණු දීමේ
+                ක්‍රම වෙත පිවිසෙන්න.
               </p>
-              <button className="btn primary">View Resources</button>
+              <button className="btn primary">සම්පත් බලන්න</button>
             </div>
           </div>
         </div>
@@ -235,36 +235,36 @@ export function HomePage() {
       <section id="schedule" className="section">
         <div className="container">
           <div className="section-header">
-            <h2>Schedule</h2>
+            <h2>කාලසටහන</h2>
           </div>
           <div className="schedule-list">
             <div className="card schedule-card">
               <div className="schedule-info">
-                <h4>O/L Grade 10</h4>
-                <p>Sun 10:00–12:00 - Center - EBS Kuliyapitiya</p>
+                <h4>සා/පෙළ 10 ශ්‍රේණිය</h4>
+                <p>ඉරිදා 10:00–12:00 - මධ්‍යස්ථානය - EBS කුලියාපිටිය</p>
               </div>
-              <button className="btn primary">Reserve Seat</button>
+              <button className="btn primary">ආසනයක් වෙන්කරවා ගන්න</button>
             </div>
             <div className="card schedule-card">
               <div className="schedule-info">
-                <h4>O/L Grade 11</h4>
-                <p>Sun 10:00–12:00 - Center - EBS Kuliyapitiya</p>
+                <h4>සා/පෙළ 11 ශ්‍රේණිය</h4>
+                <p>ඉරිදා 10:00–12:00 - මධ්‍යස්ථානය - EBS කුලියාපිටිය</p>
               </div>
-              <button className="btn primary">Reserve Seat</button>
+              <button className="btn primary">ආසනයක් වෙන්කරවා ගන්න</button>
             </div>
             <div className="card schedule-card">
               <div className="schedule-info">
-                <h4>A/L Grade 12</h4>
-                <p>Sat 10:00–12:00 - Online - Zoom</p>
+                <h4>උ/පෙළ 12 ශ්‍රේණිය</h4>
+                <p>සෙනසුරාදා 10:00–12:00 - මාර්ගගත - Zoom</p>
               </div>
-              <button className="btn primary">Reserve Seat</button>
+              <button className="btn primary">ආසනයක් වෙන්කරවා ගන්න</button>
             </div>
             <div className="card schedule-card">
               <div className="schedule-info">
-                <h4>A/L Grade 13</h4>
-                <p>Sat 10:00–12:00 - Online - Zoom</p>
+                <h4>උ/පෙළ 13 ශ්‍රේණිය</h4>
+                <p>සෙනසුරාදා 10:00–12:00 - මාර්ගගත - Zoom</p>
               </div>
-              <button className="btn primary">Reserve Seat</button>
+              <button className="btn primary">ආසනයක් වෙන්කරවා ගන්න</button>
             </div>
           </div>
         </div>
@@ -276,29 +276,36 @@ export function HomePage() {
           <div className="results-stats">
             <div className="card stat-card">
               <div className="stat-number">+18</div>
-              <p>average marks in 6 weeks</p>
+              <p>සති 6ක් තුළ සාමාන්‍ය ලකුණු</p>
             </div>
             <div className="card stat-card">
               <div className="stat-number">92%</div>
-              <p>attendance streak</p>
+              <p>පැමිණීමේ ප්‍රවණතාවය</p>
             </div>
             <div className="card stat-card">
               <div className="stat-number">120+</div>
-              <p>students supported</p>
+              <p>සහයෝගය ලබන සිසුන්</p>
             </div>
           </div>
           <div className="testimonials">
             <div className="testimonial">
-              <h4>Student 1</h4>
-              <p>"Mind maps helped me revise fast before exams."</p>
+              <h4>ශිෂ්‍ය 1</h4>
+              <p>
+                "විභාගයට පෙර වේගයෙන් පුනරීක්ෂණය කිරීමට මනෝ සිතියම් මට උපකාර
+                විය."
+              </p>
             </div>
             <div className="testimonial">
-              <h4>Student 2</h4>
-              <p>"Mind maps helped me revise fast before exams."</p>
+              <h4>ශිෂ්‍ය 2</h4>
+              <p>
+                "විභාගයට පෙර වේගයෙන් පුනරීක්ෂණය කිරීමට Mind Maps මට උපකාර විය."
+              </p>
             </div>
             <div className="testimonial">
-              <h4>Student 3</h4>
-              <p>"Mind maps helped me revise fast before exams."</p>
+              <h4>ශිෂ්‍ය 3</h4>
+              <p>
+                "විභාගයට පෙර වේගයෙන් පුනරීක්ෂණය කිරීමට Mind Maps මට උපකාර විය."
+              </p>
             </div>
           </div>
         </div>
@@ -308,7 +315,7 @@ export function HomePage() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <h2>Quick Tools</h2>
+            <h2>ඉක්මන් මෙවලම්</h2>
           </div>
           <div className="tools-grid">
             <div
@@ -316,28 +323,28 @@ export function HomePage() {
               onClick={() => handleToolClick("Binary ⇄ Decimal")}
             >
               <span className="tool-icon">🔢</span>
-              <span>Binary ⇄ Decimal</span>
+              <span>ද්විමය ⇄ දශමය</span>
             </div>
             <div
               className="tool-card"
               onClick={() => handleToolClick("Truth Table")}
             >
               <span className="tool-icon">📐</span>
-              <span>Truth Table</span>
+              <span>සත්‍ය වගුව</span>
             </div>
             <div
               className="tool-card"
               onClick={() => handleToolClick("Subnet Helper")}
             >
               <span className="tool-icon">🌐</span>
-              <span>Subnet Helper</span>
+              <span>උපජාල සහායක</span>
             </div>
             <div
               className="tool-card"
               onClick={() => handleToolClick("SQL Sample")}
             >
               <span className="tool-icon">🗄️</span>
-              <span>SQL Sample</span>
+              <span>SQL නියැදිය</span>
             </div>
           </div>
         </div>
@@ -347,13 +354,13 @@ export function HomePage() {
       <section className="section">
         <div className="container">
           <div className="about-content">
-            <div className="about-photo">Your Photo</div>
+            <div className="about-photo">ඔබේ ඡායාරූපය</div>
             <div className="about-text">
-              <h2>About Mayura</h2>
+              <h2>මයურ ගැන</h2>
               <ul>
-                <li>AI Engineer - B.Sc. (Hons) in Data Science</li>
-                <li>Mind map–first learning method</li>
-                <li>Exam-focused practice with feedback</li>
+                <li>AI ඉංජිනේරු - දත්ත විද්‍යාව පිළිබඳ B.Sc. (ගෞರವ)</li>
+                <li>Mind Maps–පළමු ඉගෙනුම් ක්‍රමය</li>
+                <li>ප්‍රතිපෝෂණ සහිත විභාග ඉලක්ක කරගත් පුහුණුව</li>
               </ul>
             </div>
           </div>
@@ -364,26 +371,27 @@ export function HomePage() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <h2>FAQ</h2>
+            <h2>නිතර අසන පැන</h2>
           </div>
           <div className="faq-list">
             <div className="card faq-item">
-              <h4>Is the class Sinhala or English?</h4>
+              <h4>පන්තිය සිංහල ද ඉංග්‍රීසි ද?</h4>
               <p>
-                Sinhala medium with English technical terms for exam alignment.
+                විභාගයට ගැළපෙන පරිදි ඉංග්‍රීසි තාක්ෂණික වචන සහිතව සිංහල
+                මාධ්‍යයෙන්.
               </p>
             </div>
             <div className="card faq-item">
-              <h4>Online or physical?</h4>
-              <p>Both options; schedule shows details.</p>
+              <h4>මාර්ගගත ද භෞතික ද?</h4>
+              <p>විකල්ප දෙකම; කාලසටහනේ විස්තර ඇත.</p>
             </div>
             <div className="card faq-item">
-              <h4>Are mind maps printable?</h4>
-              <p>Yes, each grade has a PDF.</p>
+              <h4>Mind Maps මුද්‍රණය කළ හැකි ද?</h4>
+              <p>ඔව්, සෑම ශ්‍රේණියකටම PDF එකක් ඇත.</p>
             </div>
             <div className="card faq-item">
-              <h4>Do I get past paper links?</h4>
-              <p>Nodes are tagged with past questions.</p>
+              <h4>පසුගිය ප්‍රශ්න පත්‍ර සබැඳි ලැබෙනවාද?</h4>
+              <p>නෝඩ්ස් පසුගිය ප්‍රශ්න සමඟ ටැග් කර ඇත.</p>
             </div>
           </div>
         </div>
@@ -392,12 +400,12 @@ export function HomePage() {
       {/* Lead Magnet */}
       <section id="join" className="section lead-magnet">
         <div className="container">
-          <h2>Free O/L ICT Power Sheet</h2>
+          <h2>නොමිලේ සා/පෙළ ICT Power Sheet</h2>
           <form className="lead-form" onSubmit={handleFormSubmit}>
             <input
               type="text"
               name="name"
-              placeholder="Your Name"
+              placeholder="ඔබගේ නම"
               value={formData.name}
               onChange={handleInputChange}
               required
@@ -405,7 +413,7 @@ export function HomePage() {
             <input
               type="email"
               name="email"
-              placeholder="Your Email"
+              placeholder="ඔබගේ විද්‍යුත් තැපෑල"
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -413,16 +421,16 @@ export function HomePage() {
             <input
               type="tel"
               name="phone"
-              placeholder="WhatsApp Number"
+              placeholder="WhatsApp අංකය"
               value={formData.phone}
               onChange={handleInputChange}
               required
             />
             <button type="submit" className="btn primary">
-              Get PDF
+              PDF ලබා ගන්න
             </button>
           </form>
-          <p className="privacy-note">We respect your privacy.</p>
+          <p className="privacy-note">අපි ඔබගේ පෞද්ගලිකත්වයට ගරු කරමු.</p>
         </div>
       </section>
 
@@ -430,11 +438,11 @@ export function HomePage() {
       <footer id="contact" className="footer">
         <div className="container">
           <div className="footer-contact">
-            <a href="tel:0701235142">Call: 070 123 5142</a>
+            <a href="tel:0701235142">අමතන්න: 070 123 5142</a>
             <a href="#">WhatsApp</a>
-            <a href="mailto:">Email</a>
+            <a href="mailto:">විද්‍යුත් තැපෑල</a>
           </div>
-          <p>&copy; 2025 Mayura ICT</p>
+          <p>&copy; 2025 මයურ ICT</p>
         </div>
       </footer>
     </div>
