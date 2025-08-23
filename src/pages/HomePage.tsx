@@ -51,7 +51,7 @@ export function HomePage() {
       {/* Header */}
       <header className="header">
         <div className="container">
-          <div className="logo">මයურ ICT</div>
+          <div className="logo">ICT with මයුර</div>
           <nav className="nav">
             <a href="#mindmaps">Mind Maps</a>
             <a href="#notes">සටහන්</a>
@@ -132,6 +132,24 @@ export function HomePage() {
           <div className="grade-grid">
             <div
               className="card grade-card"
+              style={{ "--color": "var(--grade-9)" } as React.CSSProperties}
+            >
+              <div className="grade-card-header">
+                <div className="grade-info">
+                  <h3>9 ශ්‍රේණිය</h3>
+                  <span>මාතෘකා 18</span>
+                </div>
+                <button
+                  className="btn primary"
+                  onClick={() => navigate("/study/g9")}
+                >
+                  විවෘත කරන්න
+                </button>
+              </div>
+              <p>ප්‍රයෝගික ICT මූලික පාඩම්.</p>
+            </div>
+            <div
+              className="card grade-card"
               style={{ "--color": "var(--grade-10)" } as React.CSSProperties}
             >
               <div className="grade-card-header">
@@ -141,9 +159,9 @@ export function HomePage() {
                 </div>
                 <button
                   className="btn primary"
-                  onClick={() => navigate("/study/ol")}
+                  onClick={() => navigate("/study/g10")}
                 >
-                  සිතියම විවෘත කරන්න
+                  විවෘත කරන්න
                 </button>
               </div>
               <p>ICT හි පදනම.</p>
@@ -159,9 +177,9 @@ export function HomePage() {
                 </div>
                 <button
                   className="btn primary"
-                  onClick={() => navigate("/study/ol")}
+                  onClick={() => navigate("/study/g11")}
                 >
-                  සිතියම විවෘත කරන්න
+                  විවෘත කරන්න
                 </button>
               </div>
               <p>විභාග ඉලක්ක කරගත් පුහුණුව.</p>
@@ -177,9 +195,9 @@ export function HomePage() {
                 </div>
                 <button
                   className="btn primary"
-                  onClick={() => navigate("/study/al-12")}
+                  onClick={() => navigate("/study/g12")}
                 >
-                  සිතියම විවෘත කරන්න
+                  විවෘත කරන්න
                 </button>
               </div>
               <p>උ/පෙළ මූලික සිද්ධාන්ත.</p>
@@ -195,9 +213,9 @@ export function HomePage() {
                 </div>
                 <button
                   className="btn primary"
-                  onClick={() => navigate("/study/al-12")}
+                  onClick={() => navigate("/study/g12")}
                 >
-                  සිතියම විවෘත කරන්න
+                  විවෘත කරන්න
                 </button>
               </div>
               <p>උසස් + පුනරීක්ෂණ.</p>
@@ -210,22 +228,19 @@ export function HomePage() {
       <section id="notes" className="section">
         <div className="container">
           <div className="two-column">
-            <div className="card notes-section">
+            <div className="card quiz-section">
               <h3>කෙටි සටහන්</h3>
-              <ul>
-                <li>දත්ත නිරූපණය – මිනිත්තු 2ක කියවීමකි</li>
-                <li>තාර්කික ද්වාර – මිනිත්තු 2ක කියවීමකි</li>
-                <li>ජාලකරණ මූලික කරුණු – මිනිත්තු 3ක කියවීමකි</li>
-              </ul>
-              <button className="btn primary">සටහන් පිරික්සන්න</button>
+              <p>මෙම අංශය ඉක්මනින් යාවත්කාලීන කෙරේ.</p>
+              <button className="btn primary" disabled>
+                Check Notes
+              </button>
             </div>
             <div className="card quiz-section">
               <h3>ප්‍රශ්න පත්‍ර සහ ලකුණු දීමේ ක්‍රම</h3>
-              <p>
-                පුහුණුව සහ අවබෝධය සඳහා පසුගිය ප්‍රශ්න පත්‍ර සහ ඒවායේ ලකුණු දීමේ
-                ක්‍රම වෙත පිවිසෙන්න.
-              </p>
-              <button className="btn primary">සම්පත් බලන්න</button>
+              <p>මෙම අංශය ඉක්මනින් යාවත්කාලීන කෙරේ.</p>
+              <button className="btn primary" disabled>
+                View Resources
+              </button>
             </div>
           </div>
         </div>
@@ -237,35 +252,17 @@ export function HomePage() {
           <div className="section-header">
             <h2>කාලසටහන</h2>
           </div>
-          <div className="schedule-list">
-            <div className="card schedule-card">
-              <div className="schedule-info">
-                <h4>සා/පෙළ 10 ශ්‍රේණිය</h4>
-                <p>ඉරිදා 10:00–12:00 - මධ්‍යස්ථානය - EBS කුලියාපිටිය</p>
-              </div>
-              <button className="btn primary">ආසනයක් වෙන්කරවා ගන්න</button>
-            </div>
-            <div className="card schedule-card">
-              <div className="schedule-info">
-                <h4>සා/පෙළ 11 ශ්‍රේණිය</h4>
-                <p>ඉරිදා 10:00–12:00 - මධ්‍යස්ථානය - EBS කුලියාපිටිය</p>
-              </div>
-              <button className="btn primary">ආසනයක් වෙන්කරවා ගන්න</button>
-            </div>
-            <div className="card schedule-card">
-              <div className="schedule-info">
-                <h4>උ/පෙළ 12 ශ්‍රේණිය</h4>
-                <p>සෙනසුරාදා 10:00–12:00 - මාර්ගගත - Zoom</p>
-              </div>
-              <button className="btn primary">ආසනයක් වෙන්කරවා ගන්න</button>
-            </div>
-            <div className="card schedule-card">
-              <div className="schedule-info">
-                <h4>උ/පෙළ 13 ශ්‍රේණිය</h4>
-                <p>සෙනසුරාදා 10:00–12:00 - මාර්ගගත - Zoom</p>
-              </div>
-              <button className="btn primary">ආසනයක් වෙන්කරවා ගන්න</button>
-            </div>
+          <div className="card">
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "1.2rem",
+                padding: "2rem",
+              }}
+            >
+              අපි 9, 10, 11 ශ්‍රේණි (සා/පෙළ) සහ 12, 13 ශ්‍රේණි (උ/පෙළ) සඳහා
+              පන්ති පවත්වමු.
+            </p>
           </div>
         </div>
       </section>
@@ -356,9 +353,9 @@ export function HomePage() {
           <div className="about-content">
             <div className="about-photo">ඔබේ ඡායාරූපය</div>
             <div className="about-text">
-              <h2>මයურ ගැන</h2>
+              <h2>ගුරුවරයා ගැන,</h2>
               <ul>
-                <li>AI ඉංජිනේරු - දත්ත විද්‍යාව පිළිබඳ B.Sc. (ගෞರವ)</li>
+                <li>AI ඉංජිනේරු - දත්ත විද්‍යාව පිළිබඳ B.Sc. (ගෞරව)</li>
                 <li>Mind Maps–පළමු ඉගෙනුම් ක්‍රමය</li>
                 <li>ප්‍රතිපෝෂණ සහිත විභාග ඉලක්ක කරගත් පුහුණුව</li>
               </ul>
@@ -442,7 +439,7 @@ export function HomePage() {
             <a href="#">WhatsApp</a>
             <a href="mailto:">විද්‍යුත් තැපෑල</a>
           </div>
-          <p>&copy; 2025 මයურ ICT</p>
+          <p>&copy; 2025 ICT with මයුර</p>
         </div>
       </footer>
     </div>

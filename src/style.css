@@ -18,6 +18,7 @@
   --brand: #2563eb;
   --grade-10: #2563eb;
   --grade-11: #16a34a;
+  --grade-9: #0ea5a4;
   --grade-12: #ea580c;
   --grade-13: #7e22ce;
   --success: #16a34a;
@@ -397,6 +398,27 @@ body {
   margin-bottom: var(--space-4);
 }
 
+/* Study page: container + header for back button and theme toggle */
+.mindmap-container {
+  position: relative; /* establish a positioning context for the header */
+  min-height: 100vh;
+}
+
+.study-header {
+  position: absolute;
+  top: var(--space-6);
+  left: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  z-index: 999; /* keep controls above the markmap canvas */
+}
+
+/* When the toggle is used in the study header we don't want the extra left margin */
+.study-header .theme-toggle {
+  margin-left: 0;
+}
+
 .grade-info h3 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -644,21 +666,24 @@ body {
 }
 
 .back-button {
-  position: absolute;
-  top: var(--space-4);
-  left: var(--space-4);
-  z-index: 10;
+  /* keep button in normal flow so header can layout controls side-by-side */
+  position: static;
+  margin: 0;
 }
 
 .study-header {
   position: absolute;
-  top: var(--space-4);
-  left: var(--space-4);
-  right: var(--space-4);
+  top: var(--space-6);
+  left: var(--space-6);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  z-index: 10;
+  gap: var(--space-3);
+  z-index: 999;
+}
+
+/* ensure toggle aligns nicely when inside the study header */
+.study-header .theme-toggle {
+  margin-left: 0;
 }
 
 .mm-toolbar img {
@@ -716,12 +741,19 @@ body {
   }
 
   .study-header {
-    flex-direction: column;
+    /* On small screens show header as a top bar with controls justified */
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-4);
+    right: var(--space-4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: var(--space-2);
-    align-items: flex-start;
+    z-index: 999;
   }
 
   .study-header .theme-toggle {
-    align-self: flex-end;
+    margin-left: 0;
   }
 }

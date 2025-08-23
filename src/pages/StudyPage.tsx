@@ -6,7 +6,7 @@ import { loadMarkdown } from "../lib/loadMarkdown";
 import { ThemeToggle } from "../components/ThemeToggle";
 
 export function StudyPage() {
-  const { level } = useParams<{ level: "ol" | "al-12" }>();
+  const { level } = useParams<{ level?: string }>();
   const navigate = useNavigate();
   const [markdown, setMarkdown] = useState<string>("පූරණය වෙමින්...");
   const [error, setError] = useState<string | null>(null);
