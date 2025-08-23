@@ -4,7 +4,7 @@ interface PromoModalProps {
 }
 
 export default function PromoModal({
-  imageSrc = "/promo.jpg",
+  imageSrc = "assets/handbills/hand-bill-1.jpg",
   onClose,
 }: PromoModalProps) {
   return (
@@ -19,7 +19,7 @@ export default function PromoModal({
           ×
         </button>
         <div className="promo-body">
-          <img src={imageSrc} alt="Promo" className="promo-img" />
+          <img src={imageSrc} alt="hand-bill-1" className="promo-img" />
         </div>
       </div>
     </div>
