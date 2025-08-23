@@ -290,7 +290,7 @@ export function HomePage() {
       </section>
 
       {/* Results */}
-      <section id="results" className="section">
+      {/* <section id="results" className="section">
         <div className="container">
           <div className="results-stats">
             <div className="card stat-card">
@@ -328,7 +328,7 @@ export function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Tools */}
       <section className="section">
@@ -458,8 +458,8 @@ export function HomePage() {
         <div className="container">
           <div className="footer-contact">
             <a href="tel:0701235142">අමතන්න: 070 123 5142</a>
-            <a href="#">WhatsApp</a>
-            <a href="mailto:">විද්‍යුත් තැපෑල</a>
+            <a href="https://wa.me/message/5ZPNOSZQ4CV3F1">WhatsApp</a>
+            <a href="mailto:mssellapperuma@gmail.com">විද්‍යුත් තැපෑල</a>
           </div>
           <p>&copy; 2025 ICT with මයුර</p>
         </div>
