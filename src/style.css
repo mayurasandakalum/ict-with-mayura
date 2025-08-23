@@ -757,3 +757,76 @@ body {
     margin-left: 0;
   }
 }
+
+/* Promo modal (global) */
+.promo-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 10, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: var(--space-4);
+}
+
+.promo-modal {
+  width: 100%;
+  max-width: 900px;
+  background: var(--bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-2);
+  position: relative;
+  overflow: visible; /* allow the close button to sit near the edge without being clipped */
+}
+
+.promo-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.promo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.promo-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2100;
+  box-shadow: 0 4px 12px rgba(2, 6, 10, 0.45);
+}
+
+.promo-close:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 480px) {
+  .promo-modal {
+    max-width: 360px;
+    border-radius: 10px;
+  }
+  .promo-close {
+    width: 40px;
+    height: 40px;
+    top: 8px;
+    right: 8px;
+    font-size: 20px;
+  }
+}

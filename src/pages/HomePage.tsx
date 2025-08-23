@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeToggle } from "../components/ThemeToggle";
 import MarkmapPreview from "../components/MarkmapPreview";
+import PromoModal from "../components/PromoModal";
+import { useEffect } from "react";
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -37,6 +39,19 @@ export function HomePage() {
 
   const handleToolClick = (toolName: string) => {
     alert(`${toolName} ක්‍රියාකාරීත්වය මෙහි ක්‍රියාත්මක වනු ඇත!`);
+  };
+
+  // Promo modal: show on first visit (persist close in localStorage)
+  const [showPromo, setShowPromo] = React.useState(false);
+
+  useEffect(() => {
+    // show modal on every page load
+    setShowPromo(true);
+  }, []);
+
+  const closePromo = () => {
+    // just hide modal for this session; do not persist
+    setShowPromo(false);
   };
 
   // const handleMarkmapPreviewClick = () => {
@@ -94,6 +109,13 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      {showPromo && (
+        <PromoModal
+          imageSrc="assets/handbills/hand-bill-1.jpg"
+          onClose={closePromo}
+        />
+      )}
 
       {/* Method Strip */}
       <section className="method-strip">
