@@ -4,7 +4,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { StudyPage } from "./pages/StudyPage";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { initializeAnalytics } from "./lib/analytics";
 import "./style.css";
+
+// Initialize analytics system (safe to call in browser environments)
+try {
+  initializeAnalytics();
+} catch (error) {
+  // eslint-disable-next-line no-console
+  console.error("Failed to initialize analytics:", error);
+}
 
 function App() {
   return (

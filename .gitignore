@@ -1,1 +1,7 @@
 /node_modules
+
+# Environment variables
+.env
+.env.dev
+.env.production
+.env.*.local
