@@ -15,6 +15,8 @@ interface PageViewData {
   page_path: string;
   referrer: string | null;
   user_agent: string;
+  browser_name: string;
+  browser_version: string;
   screen_size: string;
   language: string;
   timestamp: string;
@@ -118,6 +120,64 @@ const processQueue = async (): Promise<void> => {
 };
 
 // Enhanced page tracking with throttling
+function getBrowserInfo(): { name: string; version: string } {
+  try {
+    // Prefer the User-Agent Client Hints API when available
+    const navAny = navigator as any;
+    if (navAny.userAgentData) {
+      const brands = navAny.userAgentData.brands || navAny.userAgentData.uaList;
+      if (Array.isArray(brands) && brands.length > 0) {
+        // Pick the most specific brand (last) or first as a fallback
+        const b = brands[brands.length - 1] || brands[0];
+        return { name: b.brand || "unknown", version: b.version || "unknown" };
+      }
+    }
+
+    const ua = navigator.userAgent || "";
+    // Simple UA parsing (covers common browsers)
+    if (/Edg\//.test(ua)) {
+      return {
+        name: "Edge",
+        version: (ua.match(/Edg\/([\d\.]+)/) || [])[1] || "unknown",
+      };
+    }
+    if (/OPR\//.test(ua)) {
+      return {
+        name: "Opera",
+        version: (ua.match(/OPR\/([\d\.]+)/) || [])[1] || "unknown",
+      };
+    }
+    if (/Chrome\//.test(ua) && !/Chromium/.test(ua)) {
+      return {
+        name: "Chrome",
+        version: (ua.match(/Chrome\/([\d\.]+)/) || [])[1] || "unknown",
+      };
+    }
+    if (/CriOS\//.test(ua)) {
+      return {
+        name: "Chrome iOS",
+        version: (ua.match(/CriOS\/([\d\.]+)/) || [])[1] || "unknown",
+      };
+    }
+    if (/Firefox\//.test(ua)) {
+      return {
+        name: "Firefox",
+        version: (ua.match(/Firefox\/([\d\.]+)/) || [])[1] || "unknown",
+      };
+    }
+    if (/Safari\//.test(ua) && /Version\//.test(ua)) {
+      return {
+        name: "Safari",
+        version: (ua.match(/Version\/([\d\.]+)/) || [])[1] || "unknown",
+      };
+    }
+
+    return { name: "unknown", version: "unknown" };
+  } catch (e) {
+    return { name: "unknown", version: "unknown" };
+  }
+}
+
 export const trackPageView = (pagePath: string): void => {
   if (!isAnalyticsAllowed()) {
     return;
@@ -133,11 +193,15 @@ export const trackPageView = (pagePath: string): void => {
   try {
     const visitorId = getOrCreateVisitorId();
 
+    const browser = getBrowserInfo();
+
     const pageViewData: PageViewData = {
       visitor_id: visitorId,
       page_path: pagePath,
       referrer: document.referrer || null,
       user_agent: navigator.userAgent,
+      browser_name: browser.name,
+      browser_version: browser.version,
       screen_size: `${window.innerWidth}x${window.innerHeight}`,
       language: navigator.language,
       timestamp: new Date().toISOString(),
