@@ -15,6 +15,22 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "FBWallWW34-Regular";
+  src: url("/assets/fonts/FBWallWW34-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM_Agni";
+  src: url("/assets/fonts/SM_Agni.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --max-w: 1120px;
   --radius-sm: 8px;
@@ -351,6 +367,16 @@ body {
   font-size: 1.25rem;
   color: var(--fg-muted);
   margin-bottom: var(--space-8);
+}
+
+.errors-font {
+  font-family: "FBWallWW34-Regular", sans-serif;
+  font-size: 25px;
+}
+
+.rest-font {
+  font-family: "SM_Agni", sans-serif;
+  font-size: 35px;
 }
 
 .hero-buttons {

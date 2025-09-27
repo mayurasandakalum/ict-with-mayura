@@ -94,7 +94,10 @@ export function HomePage() {
               <br />
               <span className="english-text">ICT</span> mka;sh¡
             </h1>
-            <p>Errors නැතුව ඉගෙනගන්න...!</p>
+            <p>
+              <span className="errors-font">Errors</span>{" "}
+              <span className="rest-font">ke;=j bf.k.kak'''æ </span>
+            </p>
             <div className="hero-buttons">
               <a href="#mindmaps" className="btn primary">
                 Mind Maps බලන්න
