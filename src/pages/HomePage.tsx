@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeToggle } from "../components/ThemeToggle";
 import MarkmapPreview from "../components/MarkmapPreview";
-import PromoModal from "../components/PromoModal";
+// import PromoModal from "../components/PromoModal";
 import { useEffect } from "react";
 
 export function HomePage() {
@@ -50,11 +50,11 @@ export function HomePage() {
   };
 
   // Promo modal: show on first visit (persist close in localStorage)
-  const [showPromo, setShowPromo] = React.useState(false);
+  // const [showPromo, setShowPromo] = React.useState(false);
 
   useEffect(() => {
     // show modal on every page load
-    setShowPromo(true);
+    // setShowPromo(true);
 
     // Add scroll listener to show sections and hero visual
     const handleScroll = () => {
@@ -76,10 +76,10 @@ export function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const closePromo = () => {
-    // just hide modal for this session; do not persist
-    setShowPromo(false);
-  };
+  // const closePromo = () => {
+  //   // just hide modal for this session; do not persist
+  //   setShowPromo(false);
+  // };
 
   // const handleMarkmapPreviewClick = () => {
   //   // You could navigate to a dedicated grades page or show a modal
