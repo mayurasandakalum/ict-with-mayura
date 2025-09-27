@@ -112,7 +112,7 @@ export function HomePage() {
 
       {showPromo && (
         <PromoModal
-          imageSrc="assets/handbills/hand-bill-1.jpg"
+          imageSrc="assets/handbills/hand-bill-2.jpg"
           onClose={closePromo}
         />
       )}
