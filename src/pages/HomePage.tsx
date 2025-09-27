@@ -159,12 +159,12 @@ export function HomePage() {
         </div>
       </section>
 
-      {showPromo && (
+      {/* {showPromo && (
         <PromoModal
           imageSrc="assets/handbills/hand-bill-2.jpg"
           onClose={closePromo}
         />
-      )}
+      )} */}
 
       {/* All other sections wrapped in conditional visibility */}
       <div

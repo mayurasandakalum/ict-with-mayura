@@ -812,10 +812,12 @@ body {
     justify-content: center;
     min-height: 100vh;
     padding: var(--space-6);
+    padding-top: 20px; /* Move content higher by adding more top padding */
+    padding-bottom: 200px; /* Reduce bottom padding to compensate */
   }
 
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 40px; /* Changed from 2rem to 40px for the base heading */
     line-height: 1.2;
   }
 
@@ -906,6 +908,11 @@ body {
   .ai-highlight {
     margin: 5px 0;
     padding: 5px 20px;
+  }
+
+  /* Add this new rule to target the AI highlight specifically */
+  .hero-content h1 .ai-highlight {
+    font-size: 35px;
   }
 }
 
