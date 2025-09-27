@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeToggle } from "../components/ThemeToggle";
 import MarkmapPreview from "../components/MarkmapPreview";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // import PromoModal from "../components/PromoModal";
 import { useEffect } from "react";
 
@@ -145,6 +146,7 @@ export function HomePage() {
               </a>
               <button className="btn btn-outline" onClick={scrollToJoin}>
                 පන්තියට සහභාගී වන්න
+                <ArrowForwardIcon style={{ fontSize: "18px" }} />
               </button>
             </div>
             <div className="hero-tags">

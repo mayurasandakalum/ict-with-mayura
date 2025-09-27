@@ -206,11 +206,16 @@ body {
   background: transparent;
   border-color: var(--brand);
   color: var(--brand);
+  gap: 8px; /* Adjust gap for icon spacing */
 }
 
 .btn.btn-outline:hover {
   background: var(--brand);
   color: white;
+}
+
+.btn.btn-outline:hover svg {
+  color: white; /* Ensure icon color changes on hover */
 }
 
 .card {
