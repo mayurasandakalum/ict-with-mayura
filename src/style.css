@@ -172,10 +172,11 @@ body {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center; /* Center content horizontally */
   gap: 10px;
   height: 44px;
   padding: 0 18px;
-  border-radius: 12px;
+  border-radius: 999px; /* Make it pill-shaped */
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--fg);
@@ -194,10 +195,22 @@ body {
   background: var(--brand);
   color: white;
   border-color: transparent;
+  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.4); /* Add a subtle glow */
 }
 
 .btn.primary:hover {
   background: #1d4ed8;
+}
+
+.btn.btn-outline {
+  background: transparent;
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.btn.btn-outline:hover {
+  background: var(--brand);
+  color: white;
 }
 
 .card {
@@ -824,6 +837,15 @@ body {
   .hero-content h1 br {
     display: block;
     margin: 0.5rem 0;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
   }
 
   /* Hero visual as separate full-height section, initially hidden */

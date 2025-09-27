@@ -143,7 +143,7 @@ export function HomePage() {
               >
                 iïnkaO jkak
               </a>
-              <button className="btn" onClick={scrollToJoin}>
+              <button className="btn btn-outline" onClick={scrollToJoin}>
                 පන්තියට සහභාගී වන්න
               </button>
             </div>
