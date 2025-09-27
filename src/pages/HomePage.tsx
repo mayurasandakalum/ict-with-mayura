@@ -137,12 +137,8 @@ export function HomePage() {
               <span className="rest-font">ke;=j bf.k.kak'''æ </span>
             </p>
             <div className="hero-buttons">
-              <a
-                href="#contact"
-                className="btn primary"
-                style={{ fontFamily: '"FM-Emanee"' }}
-              >
-                iïnkaO jkak
+              <a href="#contact" className="btn primary">
+                සම්බන්ධ වන්න
               </a>
               <button className="btn btn-outline" onClick={scrollToJoin}>
                 පන්තියට සහභාගී වන්න
