@@ -343,7 +343,6 @@ body {
   border-radius: var(--radius-md);
   font-weight: 700;
   display: inline-block;
-  margin: 0;
   -webkit-text-fill-color: white;
   background-clip: initial;
 }
@@ -776,6 +775,12 @@ body {
 
   .hero-content h1 {
     font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero-content h1 br {
+    display: block;
+    margin: 0.5rem 0;
   }
 
   .hero-visual {
@@ -837,6 +842,11 @@ body {
 
   .study-header .theme-toggle {
     margin-left: 0;
+  }
+
+  .ai-highlight {
+    margin: 5px 0;
+    padding: 5px 20px;
   }
 }
 

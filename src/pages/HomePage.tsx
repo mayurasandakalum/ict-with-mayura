@@ -90,7 +90,8 @@ export function HomePage() {
               <span className="english-text green-text">A</span> olajd mdr lshk"{" "}
               <span className="ai-highlight">
                 <span className="english-text">AI</span> bxðfkarejdf.a
-              </span>{" "}
+              </span>
+              <br />
               <span className="english-text">ICT</span> mka;sh¡
             </h1>
             <p>Errors නැතුව ඉගෙනගන්න...!</p>
