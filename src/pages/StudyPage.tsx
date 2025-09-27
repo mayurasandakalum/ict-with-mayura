@@ -22,7 +22,7 @@ export function StudyPage() {
   return (
     <div className="mindmap-container">
       <div className="study-header">
-        <button className="btn back-button" onClick={() => navigate("/")}>
+        <button className="btn back-button" onClick={() => navigate(-1)}>
           ← මුල් පිටුවට
         </button>
         <ThemeToggle />
