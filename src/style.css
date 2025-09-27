@@ -1,3 +1,20 @@
+/* Custom font loading - add this at the top of the file */
+@font-face {
+  font-family: "FM-Emanee";
+  src: url("/assets/fonts/FM-Emanee.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist-Bold";
+  src: url("/assets/fonts/Geist-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --max-w: 1120px;
   --radius-sm: 8px;
@@ -275,13 +292,60 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 3rem;
+  font-family: "FM-Emanee", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  font-size: 45px;
   font-weight: 800;
   margin-bottom: var(--space-4);
   background: linear-gradient(135deg, var(--fg), var(--brand));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.hero-content h1 .english-text {
+  font-family: "Geist-Bold", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  font-weight: bold;
+}
+
+.hero-content h1 .green-text {
+  color: #16a34a !important;
+  -webkit-text-fill-color: #16a34a !important;
+}
+
+.hero-content h1 .red-text {
+  color: #ef4444 !important;
+  -webkit-text-fill-color: #ef4444 !important;
+}
+
+.hero-tagline {
+  font-family: "FM-Emanee", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  margin-bottom: var(--space-6);
+  text-align: left;
+}
+
+.hero-tagline .english-text {
+  font-family: "Geist-Bold", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  font-weight: bold;
+  color: var(--fg);
+}
+
+.ai-highlight {
+  background: var(--brand);
+  color: white !important;
+  padding: 0px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  display: inline-block;
+  margin: 0;
+  -webkit-text-fill-color: white;
+  background-clip: initial;
 }
 
 .hero-content p {
@@ -552,14 +616,14 @@ body {
 /* About */
 .about-content {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 300px 1fr;
   gap: var(--space-8);
   align-items: center;
 }
 
 .about-photo {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   background: var(--bg-alt);
   border-radius: 50%;
   display: flex;
@@ -567,6 +631,19 @@ body {
   justify-content: center;
   color: var(--fg-muted);
   font-weight: 500;
+}
+
+/* About image: make the <img> fill the circular .about-photo container */
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(16, 20, 24, 0.18);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  image-rendering: auto;
 }
 
 .about-text ul {
@@ -720,6 +797,11 @@ body {
   .about-content {
     grid-template-columns: 1fr;
     text-align: center;
+    justify-items: center; /* center grid items horizontally */
+  }
+
+  .about-photo {
+    margin: 0 auto; /* ensure the circular photo container is centered */
   }
 
   .nav {
@@ -829,4 +911,15 @@ body {
     right: 8px;
     font-size: 20px;
   }
+}
+.promo-modal {
+  max-width: 360px;
+  border-radius: 10px;
+}
+.promo-close {
+  width: 40px;
+  height: 40px;
+  top: 8px;
+  right: 8px;
+  font-size: 20px;
 }

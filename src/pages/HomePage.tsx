@@ -85,11 +85,15 @@ export function HomePage() {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1>ICT පටන් ගන්න කලින් සිතියම බලමු</h1>
-            <p>
-              Mind Maps වලින් පටන් ගන්න. විශාල චිත්‍රය බලන්න, විස්තර ප්‍රගුණ
-              කරන්න, ඉහළ ලකුණු ලබා ගන්න.
-            </p>
+            <h1>
+              <span className="english-text red-text">F</span> isg{" "}
+              <span className="english-text green-text">A</span> olajd mdr lshk"{" "}
+              <span className="ai-highlight">
+                <span className="english-text">AI</span> bxðfkarejdf.a
+              </span>{" "}
+              <span className="english-text">ICT</span> mka;sh¡
+            </h1>
+            <p>Errors නැතුව ඉගෙනගන්න...!</p>
             <div className="hero-buttons">
               <a href="#mindmaps" className="btn primary">
                 Mind Maps බලන්න
@@ -373,14 +377,22 @@ export function HomePage() {
       <section className="section">
         <div className="container">
           <div className="about-content">
-            <div className="about-photo">ඔබේ ඡායාරූපය</div>
+            <div className="about-photo">
+              <img
+                src="assets/my-photo/photo-1.jpg"
+                alt="ගුරුවරයාගේ ඡායාරූපය"
+              />
+            </div>
             <div className="about-text">
               <h2>ගුරුවරයා ගැන,</h2>
-              <ul>
-                <li>AI ඉංජිනේරු - දත්ත විද්‍යාව පිළිබඳ B.Sc. (ගෞරව)</li>
-                <li>Mind Maps–පළමු ඉගෙනුම් ක්‍රමය</li>
-                <li>ප්‍රතිපෝෂණ සහිත විභාග ඉලක්ක කරගත් පුහුණුව</li>
-              </ul>
+              <p>
+                මම මයුර සෙල්ලප්පෙරුම, දත්ත විද්‍යාව පිළිබඳ ගෞරව උපාධියක් හිමි AI
+                ඉංජිනේරුවෙකි. සංකීර්ණ ICT විෂය නිර්දේශය සරල, තේරුම් ගත හැකි
+                කොටස් වලට කඩා, Mind Maps වැනි නවීන ඉගැන්වීම් ක්‍රමවේද භාවිතා
+                කරමින් ඔබට ඉගැන්වීම මගේ අරමුණයි. විභාග ඉලක්ක කරගත් පුහුණුව සහ
+                එක් එක් ශිෂ්‍යයාට වෙන වෙනම අවධානය යොමු කරමින්, සාර්ථක
+                ප්‍රතිඵලයක් කරා ඔබව ගෙන යාමට මම කැපවී සිටිමි.
+              </p>
             </div>
           </div>
         </div>
