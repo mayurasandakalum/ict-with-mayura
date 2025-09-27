@@ -99,8 +99,12 @@ export function HomePage() {
               <span className="rest-font">ke;=j bf.k.kak'''æ </span>
             </p>
             <div className="hero-buttons">
-              <a href="#mindmaps" className="btn primary">
-                Mind Maps බලන්න
+              <a
+                href="#contact"
+                className="btn primary"
+                style={{ fontFamily: '"FM-Emanee"' }}
+              >
+                iïnkaO jkak
               </a>
               <button className="btn" onClick={scrollToJoin}>
                 පන්තියට සහභාගී වන්න
