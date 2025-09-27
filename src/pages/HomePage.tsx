@@ -13,8 +13,16 @@ export function HomePage() {
     phone: "",
   });
 
+  // Add state for controlling section visibility
+  const [sectionsVisible, setSectionsVisible] = useState(false);
+  // Add state for hero-visual visibility on mobile
+  const [heroVisualVisible, setHeroVisualVisible] = useState(false);
+
   const scrollToJoin = () => {
-    document.getElementById("join")?.scrollIntoView({ behavior: "smooth" });
+    setSectionsVisible(true);
+    setTimeout(() => {
+      document.getElementById("join")?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -47,6 +55,25 @@ export function HomePage() {
   useEffect(() => {
     // show modal on every page load
     setShowPromo(true);
+
+    // Add scroll listener to show sections and hero visual
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+
+      // Show hero visual when scrolling past first screen (mobile behavior)
+      if (scrollY > windowHeight * 0.5) {
+        setHeroVisualVisible(true);
+      }
+
+      // Show other sections after scrolling past hero visual
+      if (scrollY > windowHeight * 1.2) {
+        setSectionsVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const closePromo = () => {
@@ -68,11 +95,21 @@ export function HomePage() {
         <div className="container">
           <div className="logo">ICT with මයුර</div>
           <nav className="nav">
-            <a href="#mindmaps">Mind Maps</a>
-            <a href="#notes">සටහන්</a>
-            <a href="#schedule">කාලසටහන</a>
-            <a href="#results">ප්‍රතිඵල</a>
-            <a href="#contact">සම්බන්ධ වන්න</a>
+            <a href="#mindmaps" onClick={() => setSectionsVisible(true)}>
+              Mind Maps
+            </a>
+            <a href="#notes" onClick={() => setSectionsVisible(true)}>
+              සටහන්
+            </a>
+            <a href="#schedule" onClick={() => setSectionsVisible(true)}>
+              කාලසටහන
+            </a>
+            <a href="#results" onClick={() => setSectionsVisible(true)}>
+              ප්‍රතිඵල
+            </a>
+            <a href="#contact" onClick={() => setSectionsVisible(true)}>
+              සම්බන්ධ වන්න
+            </a>
             <button className="btn primary" onClick={scrollToJoin}>
               පන්තියට සහභාගී වන්න
             </button>
@@ -82,7 +119,7 @@ export function HomePage() {
       </header>
 
       {/* Hero */}
-      <section className="hero">
+      <section className="hero hero-fullscreen">
         <div className="container">
           <div className="hero-content">
             <h1>
@@ -116,7 +153,7 @@ export function HomePage() {
               <span className="tag">සිංහල + ඉංග්‍රීසි</span>
             </div>
           </div>
-          <div className="hero-visual">
+          <div className={`hero-visual ${heroVisualVisible ? "visible" : ""}`}>
             <MarkmapPreview />
           </div>
         </div>
@@ -129,180 +166,186 @@ export function HomePage() {
         />
       )}
 
-      {/* Method Strip */}
-      <section className="method-strip">
-        <div className="container">
-          <div className="method-items">
-            <div className="method-item">
-              <div className="method-item-icon">🗺️</div>
-              <h3>සිතියම</h3>
-              <p>විශ්වාසය සඳහා පළමුව විශාල චිත්‍රය.</p>
-            </div>
-            <div className="method-item">
-              <div className="method-item-icon">📝</div>
-              <h3>කෙටි සටහන්</h3>
-              <p>විභාග ඉලක්ක කරගත්, කුඩා කොටස්.</p>
-            </div>
-            <div className="method-item">
-              <div className="method-item-icon">📄</div>
-              <h3>ප්‍රශ්න පත්‍ර</h3>
-              <p>පසුගිය ප්‍රශ්න පත්‍ර සමඟ පුහුණු වන්න.</p>
-            </div>
-            <div className="method-item">
-              <div className="method-item-icon">🖋️</div>
-              <h3>Marking Schemes</h3>
-              <p>ලකුණු දීමේ නිර්ණායක තේරුම් ගන්න.</p>
+      {/* All other sections wrapped in conditional visibility */}
+      <div
+        className={`content-sections ${
+          sectionsVisible ? "sections-visible" : ""
+        }`}
+      >
+        {/* Method Strip */}
+        <section className="method-strip">
+          <div className="container">
+            <div className="method-items">
+              <div className="method-item">
+                <div className="method-item-icon">🗺️</div>
+                <h3>සිතියම</h3>
+                <p>විශ්වාසය සඳහා පළමුව විශාල චිත්‍රය.</p>
+              </div>
+              <div className="method-item">
+                <div className="method-item-icon">📝</div>
+                <h3>කෙටි සටහන්</h3>
+                <p>විභාග ඉලක්ක කරගත්, කුඩා කොටස්.</p>
+              </div>
+              <div className="method-item">
+                <div className="method-item-icon">📄</div>
+                <h3>ප්‍රශ්න පත්‍ර</h3>
+                <p>පසුගිය ප්‍රශ්න පත්‍ර සමඟ පුහුණු වන්න.</p>
+              </div>
+              <div className="method-item">
+                <div className="method-item-icon">🖋️</div>
+                <h3>Marking Schemes</h3>
+                <p>ලකුණු දීමේ නිර්ණායක තේරුම් ගන්න.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Mind Maps */}
-      <section id="mindmaps" className="section">
-        <div className="container">
-          <div className="section-header">
-            <h2>ශ්‍රේණිය අනුව Mind Maps</h2>
+        {/* Mind Maps */}
+        <section id="mindmaps" className="section">
+          <div className="container">
+            <div className="section-header">
+              <h2>ශ්‍රේණිය අනුව Mind Maps</h2>
+            </div>
+            <div className="grade-grid">
+              <div
+                className="card grade-card"
+                style={{ "--color": "var(--grade-9)" } as React.CSSProperties}
+              >
+                <div className="grade-card-header">
+                  <div className="grade-info">
+                    <h3>9 ශ්‍රේණිය</h3>
+                    <span>මාතෘකා 18</span>
+                  </div>
+                  <button
+                    className="btn primary"
+                    onClick={() => navigate("/study/g9")}
+                  >
+                    විවෘත කරන්න
+                  </button>
+                </div>
+                <p>ප්‍රයෝගික ICT මූලික පාඩම්.</p>
+              </div>
+              <div
+                className="card grade-card"
+                style={{ "--color": "var(--grade-10)" } as React.CSSProperties}
+              >
+                <div className="grade-card-header">
+                  <div className="grade-info">
+                    <h3>10 ශ්‍රේණිය</h3>
+                    <span>මාතෘකා 24</span>
+                  </div>
+                  <button
+                    className="btn primary"
+                    onClick={() => navigate("/study/g10")}
+                  >
+                    විවෘත කරන්න
+                  </button>
+                </div>
+                <p>ICT හි පදනම.</p>
+              </div>
+              <div
+                className="card grade-card"
+                style={{ "--color": "var(--grade-11)" } as React.CSSProperties}
+              >
+                <div className="grade-card-header">
+                  <div className="grade-info">
+                    <h3>11 ශ්‍රේණිය</h3>
+                    <span>මාතෘකා 26</span>
+                  </div>
+                  <button
+                    className="btn primary"
+                    onClick={() => navigate("/study/g11")}
+                  >
+                    විවෘත කරන්න
+                  </button>
+                </div>
+                <p>විභාග ඉලක්ක කරගත් පුහුණුව.</p>
+              </div>
+              <div
+                className="card grade-card"
+                style={{ "--color": "var(--grade-12)" } as React.CSSProperties}
+              >
+                <div className="grade-card-header">
+                  <div className="grade-info">
+                    <h3>12 ශ්‍රේණිය</h3>
+                    <span>මාතෘකා 32</span>
+                  </div>
+                  <button
+                    className="btn primary"
+                    onClick={() => navigate("/study/g12")}
+                  >
+                    විවෘත කරන්න
+                  </button>
+                </div>
+                <p>උ/පෙළ මූලික සිද්ධාන්ත.</p>
+              </div>
+              <div
+                className="card grade-card"
+                style={{ "--color": "var(--grade-13)" } as React.CSSProperties}
+              >
+                <div className="grade-card-header">
+                  <div className="grade-info">
+                    <h3>13 ශ්‍රේණිය</h3>
+                    <span>මාතෘකා 28</span>
+                  </div>
+                  <button
+                    className="btn primary"
+                    onClick={() => navigate("/study/g12")}
+                  >
+                    විවෘත කරන්න
+                  </button>
+                </div>
+                <p>උසස් + පුනරීක්ෂණ.</p>
+              </div>
+            </div>
           </div>
-          <div className="grade-grid">
-            <div
-              className="card grade-card"
-              style={{ "--color": "var(--grade-9)" } as React.CSSProperties}
-            >
-              <div className="grade-card-header">
-                <div className="grade-info">
-                  <h3>9 ශ්‍රේණිය</h3>
-                  <span>මාතෘකා 18</span>
-                </div>
-                <button
-                  className="btn primary"
-                  onClick={() => navigate("/study/g9")}
-                >
-                  විවෘත කරන්න
-                </button>
-              </div>
-              <p>ප්‍රයෝගික ICT මූලික පාඩම්.</p>
-            </div>
-            <div
-              className="card grade-card"
-              style={{ "--color": "var(--grade-10)" } as React.CSSProperties}
-            >
-              <div className="grade-card-header">
-                <div className="grade-info">
-                  <h3>10 ශ්‍රේණිය</h3>
-                  <span>මාතෘකා 24</span>
-                </div>
-                <button
-                  className="btn primary"
-                  onClick={() => navigate("/study/g10")}
-                >
-                  විවෘත කරන්න
-                </button>
-              </div>
-              <p>ICT හි පදනම.</p>
-            </div>
-            <div
-              className="card grade-card"
-              style={{ "--color": "var(--grade-11)" } as React.CSSProperties}
-            >
-              <div className="grade-card-header">
-                <div className="grade-info">
-                  <h3>11 ශ්‍රේණිය</h3>
-                  <span>මාතෘකා 26</span>
-                </div>
-                <button
-                  className="btn primary"
-                  onClick={() => navigate("/study/g11")}
-                >
-                  විවෘත කරන්න
-                </button>
-              </div>
-              <p>විභාග ඉලක්ක කරගත් පුහුණුව.</p>
-            </div>
-            <div
-              className="card grade-card"
-              style={{ "--color": "var(--grade-12)" } as React.CSSProperties}
-            >
-              <div className="grade-card-header">
-                <div className="grade-info">
-                  <h3>12 ශ්‍රේණිය</h3>
-                  <span>මාතෘකා 32</span>
-                </div>
-                <button
-                  className="btn primary"
-                  onClick={() => navigate("/study/g12")}
-                >
-                  විවෘත කරන්න
-                </button>
-              </div>
-              <p>උ/පෙළ මූලික සිද්ධාන්ත.</p>
-            </div>
-            <div
-              className="card grade-card"
-              style={{ "--color": "var(--grade-13)" } as React.CSSProperties}
-            >
-              <div className="grade-card-header">
-                <div className="grade-info">
-                  <h3>13 ශ්‍රේණිය</h3>
-                  <span>මාතෘකා 28</span>
-                </div>
-                <button
-                  className="btn primary"
-                  onClick={() => navigate("/study/g12")}
-                >
-                  විවෘත කරන්න
-                </button>
-              </div>
-              <p>උසස් + පුනරීක්ෂණ.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Notes + Quiz */}
-      <section id="notes" className="section">
-        <div className="container">
-          <div className="two-column">
-            <div className="card quiz-section">
-              <h3>කෙටි සටහන්</h3>
-              <p>මෙම අංශය ඉක්මනින් යාවත්කාලීන කෙරේ.</p>
-              <button className="btn primary" disabled>
-                Check Notes
-              </button>
+        {/* Notes + Quiz */}
+        <section id="notes" className="section">
+          <div className="container">
+            <div className="two-column">
+              <div className="card quiz-section">
+                <h3>කෙටි සටහන්</h3>
+                <p>මෙම අංශය ඉක්මනින් යාවත්කාලීන කෙරේ.</p>
+                <button className="btn primary" disabled>
+                  Check Notes
+                </button>
+              </div>
+              <div className="card quiz-section">
+                <h3>ප්‍රශ්න පත්‍ර සහ ලකුණු දීමේ ක්‍රම</h3>
+                <p>මෙම අංශය ඉක්මනින් යාවත්කාලීන කෙරේ.</p>
+                <button className="btn primary" disabled>
+                  View Resources
+                </button>
+              </div>
             </div>
-            <div className="card quiz-section">
-              <h3>ප්‍රශ්න පත්‍ර සහ ලකුණු දීමේ ක්‍රම</h3>
-              <p>මෙම අංශය ඉක්මනින් යාවත්කාලීන කෙරේ.</p>
-              <button className="btn primary" disabled>
-                View Resources
-              </button>
+          </div>
+        </section>
+
+        {/* Schedule */}
+        <section id="schedule" className="section">
+          <div className="container">
+            <div className="section-header">
+              <h2>කාලසටහන</h2>
+            </div>
+            <div className="card">
+              <p
+                style={{
+                  textAlign: "center",
+                  fontSize: "1.2rem",
+                  padding: "2rem",
+                }}
+              >
+                අපි 9, 10, 11 ශ්‍රේණි (සා/පෙළ) සහ 12, 13 ශ්‍රේණි (උ/පෙළ) සඳහා
+                පන්ති පවත්වමු.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Schedule */}
-      <section id="schedule" className="section">
-        <div className="container">
-          <div className="section-header">
-            <h2>කාලසටහන</h2>
-          </div>
-          <div className="card">
-            <p
-              style={{
-                textAlign: "center",
-                fontSize: "1.2rem",
-                padding: "2rem",
-              }}
-            >
-              අපි 9, 10, 11 ශ්‍රේණි (සා/පෙළ) සහ 12, 13 ශ්‍රේණි (උ/පෙළ) සඳහා
-              පන්ති පවත්වමු.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Results */}
-      {/* <section id="results" className="section">
+        {/* Results */}
+        {/* <section id="results" className="section">
         <div className="container">
           <div className="results-stats">
             <div className="card stat-card">
@@ -342,148 +385,149 @@ export function HomePage() {
         </div>
       </section> */}
 
-      {/* Tools */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <h2>ඉක්මන් මෙවලම්</h2>
+        {/* Tools */}
+        <section className="section">
+          <div className="container">
+            <div className="section-header">
+              <h2>ඉක්මන් මෙවලම්</h2>
+            </div>
+            <div className="tools-grid">
+              <div
+                className="tool-card"
+                onClick={() => handleToolClick("Binary ⇄ Decimal")}
+              >
+                <span className="tool-icon">🔢</span>
+                <span>ද්විමය ⇄ දශමය</span>
+              </div>
+              <div
+                className="tool-card"
+                onClick={() => handleToolClick("Truth Table")}
+              >
+                <span className="tool-icon">📐</span>
+                <span>සත්‍ය වගුව</span>
+              </div>
+              <div
+                className="tool-card"
+                onClick={() => handleToolClick("Subnet Helper")}
+              >
+                <span className="tool-icon">🌐</span>
+                <span>උපජාල සහායක</span>
+              </div>
+              <div
+                className="tool-card"
+                onClick={() => handleToolClick("SQL Sample")}
+              >
+                <span className="tool-icon">🗄️</span>
+                <span>SQL නියැදිය</span>
+              </div>
+            </div>
           </div>
-          <div className="tools-grid">
-            <div
-              className="tool-card"
-              onClick={() => handleToolClick("Binary ⇄ Decimal")}
-            >
-              <span className="tool-icon">🔢</span>
-              <span>ද්විමය ⇄ දශමය</span>
-            </div>
-            <div
-              className="tool-card"
-              onClick={() => handleToolClick("Truth Table")}
-            >
-              <span className="tool-icon">📐</span>
-              <span>සත්‍ය වගුව</span>
-            </div>
-            <div
-              className="tool-card"
-              onClick={() => handleToolClick("Subnet Helper")}
-            >
-              <span className="tool-icon">🌐</span>
-              <span>උපජාල සහායක</span>
-            </div>
-            <div
-              className="tool-card"
-              onClick={() => handleToolClick("SQL Sample")}
-            >
-              <span className="tool-icon">🗄️</span>
-              <span>SQL නියැදිය</span>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* About */}
-      <section className="section">
-        <div className="container">
-          <div className="about-content">
-            <div className="about-photo">
-              <img
-                src="assets/my-photo/photo-1.jpg"
-                alt="ගුරුවරයාගේ ඡායාරූපය"
+        {/* About */}
+        <section className="section">
+          <div className="container">
+            <div className="about-content">
+              <div className="about-photo">
+                <img
+                  src="assets/my-photo/photo-1.jpg"
+                  alt="ගුරුවරයාගේ ඡායාරූපය"
+                />
+              </div>
+              <div className="about-text">
+                <h2>ගුරුවරයා ගැන,</h2>
+                <p>
+                  මම මයුර සෙල්ලප්පෙරුම, දත්ත විද්‍යාව පිළිබඳ ගෞරව උපාධියක් හිමි
+                  AI ඉංජිනේරුවෙකි. සංකීර්ණ ICT විෂය නිර්දේශය සරල, තේරුම් ගත හැකි
+                  කොටස් වලට කඩා, Mind Maps වැනි නවීන ඉගැන්වීම් ක්‍රමවේද භාවිතා
+                  කරමින් ඔබට ඉගැන්වීම මගේ අරමුණයි. විභාග ඉලක්ක කරගත් පුහුණුව සහ
+                  එක් එක් ශිෂ්‍යයාට වෙන වෙනම අවධානය යොමු කරමින්, සාර්ථක
+                  ප්‍රතිඵලයක් කරා ඔබව ගෙන යාමට මම කැපවී සිටිමි.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="section">
+          <div className="container">
+            <div className="section-header">
+              <h2>නිතර අසන පැන</h2>
+            </div>
+            <div className="faq-list">
+              <div className="card faq-item">
+                <h4>පන්තිය සිංහල ද ඉංග්‍රීසි ද?</h4>
+                <p>
+                  විභාගයට ගැළපෙන පරිදි ඉංග්‍රීසි තාක්ෂණික වචන සහිතව සිංහල
+                  මාධ්‍යයෙන්.
+                </p>
+              </div>
+              <div className="card faq-item">
+                <h4>මාර්ගගත ද භෞතික ද?</h4>
+                <p>විකල්ප දෙකම; කාලසටහනේ විස්තර ඇත.</p>
+              </div>
+              <div className="card faq-item">
+                <h4>Mind Maps මුද්‍රණය කළ හැකි ද?</h4>
+                <p>ඔව්, සෑම ශ්‍රේණියකටම PDF එකක් ඇත.</p>
+              </div>
+              <div className="card faq-item">
+                <h4>පසුගිය ප්‍රශ්න පත්‍ර සබැඳි ලැබෙනවාද?</h4>
+                <p>නෝඩ්ස් පසුගිය ප්‍රශ්න සමඟ ටැග් කර ඇත.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Lead Magnet */}
+        <section id="join" className="section lead-magnet">
+          <div className="container">
+            <h2>නොමිලේ සා/පෙළ ICT Power Sheet</h2>
+            <form className="lead-form" onSubmit={handleFormSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="ඔබගේ නම"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
               />
-            </div>
-            <div className="about-text">
-              <h2>ගුරුවරයා ගැන,</h2>
-              <p>
-                මම මයුර සෙල්ලප්පෙරුම, දත්ත විද්‍යාව පිළිබඳ ගෞරව උපාධියක් හිමි AI
-                ඉංජිනේරුවෙකි. සංකීර්ණ ICT විෂය නිර්දේශය සරල, තේරුම් ගත හැකි
-                කොටස් වලට කඩා, Mind Maps වැනි නවීන ඉගැන්වීම් ක්‍රමවේද භාවිතා
-                කරමින් ඔබට ඉගැන්වීම මගේ අරමුණයි. විභාග ඉලක්ක කරගත් පුහුණුව සහ
-                එක් එක් ශිෂ්‍යයාට වෙන වෙනම අවධානය යොමු කරමින්, සාර්ථක
-                ප්‍රතිඵලයක් කරා ඔබව ගෙන යාමට මම කැපවී සිටිමි.
-              </p>
-            </div>
+              <input
+                type="email"
+                name="email"
+                placeholder="ඔබගේ විද්‍යුත් තැපෑල"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="WhatsApp අංකය"
+                value={formData.phone}
+                onChange={handleInputChange}
+                required
+              />
+              <button type="submit" className="btn primary">
+                PDF ලබා ගන්න
+              </button>
+            </form>
+            <p className="privacy-note">අපි ඔබගේ පෞද්ගලිකත්වයට ගරු කරමු.</p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FAQ */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <h2>නිතර අසන පැන</h2>
+        {/* Footer */}
+        <footer id="contact" className="footer">
+          <div className="container">
+            <div className="footer-contact">
+              <a href="tel:0701235142">අමතන්න: 070 123 5142</a>
+              <a href="https://wa.me/message/5ZPNOSZQ4CV3F1">WhatsApp</a>
+              <a href="mailto:mssellapperuma@gmail.com">විද්‍යුත් තැපෑල</a>
+            </div>
+            <p>&copy; 2025 ICT with මයුර</p>
           </div>
-          <div className="faq-list">
-            <div className="card faq-item">
-              <h4>පන්තිය සිංහල ද ඉංග්‍රීසි ද?</h4>
-              <p>
-                විභාගයට ගැළපෙන පරිදි ඉංග්‍රීසි තාක්ෂණික වචන සහිතව සිංහල
-                මාධ්‍යයෙන්.
-              </p>
-            </div>
-            <div className="card faq-item">
-              <h4>මාර්ගගත ද භෞතික ද?</h4>
-              <p>විකල්ප දෙකම; කාලසටහනේ විස්තර ඇත.</p>
-            </div>
-            <div className="card faq-item">
-              <h4>Mind Maps මුද්‍රණය කළ හැකි ද?</h4>
-              <p>ඔව්, සෑම ශ්‍රේණියකටම PDF එකක් ඇත.</p>
-            </div>
-            <div className="card faq-item">
-              <h4>පසුගිය ප්‍රශ්න පත්‍ර සබැඳි ලැබෙනවාද?</h4>
-              <p>නෝඩ්ස් පසුගිය ප්‍රශ්න සමඟ ටැග් කර ඇත.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Lead Magnet */}
-      <section id="join" className="section lead-magnet">
-        <div className="container">
-          <h2>නොමිලේ සා/පෙළ ICT Power Sheet</h2>
-          <form className="lead-form" onSubmit={handleFormSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="ඔබගේ නම"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="ඔබගේ විද්‍යුත් තැපෑල"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="WhatsApp අංකය"
-              value={formData.phone}
-              onChange={handleInputChange}
-              required
-            />
-            <button type="submit" className="btn primary">
-              PDF ලබා ගන්න
-            </button>
-          </form>
-          <p className="privacy-note">අපි ඔබගේ පෞද්ගලිකත්වයට ගරු කරමු.</p>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer id="contact" className="footer">
-        <div className="container">
-          <div className="footer-contact">
-            <a href="tel:0701235142">අමතන්න: 070 123 5142</a>
-            <a href="https://wa.me/message/5ZPNOSZQ4CV3F1">WhatsApp</a>
-            <a href="mailto:mssellapperuma@gmail.com">විද්‍යුත් තැපෑල</a>
-          </div>
-          <p>&copy; 2025 ICT with මයුර</p>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 }
